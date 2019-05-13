@@ -15,7 +15,6 @@ import Data.HashMap.Lazy    (HashMap)
 import Data.HashSet         (HashSet)
 import Data.Monoid          (Sum)
 import Data.Scientific      (Scientific)
-import Data.Semigroup       (Min (..))
 import Data.Tagged          (Tagged)
 import Data.Text            (Text)
 import Data.Vector          (Vector)
@@ -53,7 +52,6 @@ tests = testGroup "Roundtrip"
     , roundtripProperty (undefined :: (CI Text))
     -- semigroups / monoids
     , roundtripProperty (undefined :: (Sum Int))
-    , roundtripProperty (undefined :: (Min Int))
     -- tagged
     , roundtripProperty (undefined :: Tagged Int Char)
     -- scientific
