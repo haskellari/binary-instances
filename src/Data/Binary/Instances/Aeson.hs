@@ -1,7 +1,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Data.Binary.Instances.Aeson where
 
-import Data.Binary (Binary, Get, get, put)
+import Data.Binary         (Binary, Get, get, put)
 import Data.Binary.Orphans ()
 
 import Data.Binary.Instances.Scientific ()

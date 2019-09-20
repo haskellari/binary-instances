@@ -15,10 +15,16 @@ license-file:       LICENSE
 build-type:         Simple
 cabal-version:      >=1.10
 tested-with:
-  GHC ==8.8.1 || ==8.6.5 || ==8.4.4 || ==8.2.2 || ==8.0.2 || ==7.10.3 || ==7.8.4 || ==7.6.3
+  GHC ==7.6.3
+   || ==7.8.4
+   || ==7.10.3
+   || ==8.0.2
+   || ==8.2.2
+   || ==8.4.4
+   || ==8.6.5
+   || ==8.8.1
 
-extra-source-files:
-  CHANGELOG.md
+extra-source-files: CHANGELOG.md
 
 source-repository head
   type:     git
@@ -46,11 +52,11 @@ library
     Data.Binary.Instances
     Data.Binary.Instances.Aeson
     Data.Binary.Instances.CaseInsensitive
+    Data.Binary.Instances.Hashable
     Data.Binary.Instances.Scientific
+    Data.Binary.Instances.Tagged
     Data.Binary.Instances.Text
     Data.Binary.Instances.Time
-    Data.Binary.Instances.Tagged
-    Data.Binary.Instances.Hashable
     Data.Binary.Instances.UnorderedContainers
     Data.Binary.Instances.Vector
 
@@ -79,4 +85,3 @@ test-suite binary-instances-test
     , time-compat
     , unordered-containers
     , vector
-
