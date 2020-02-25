@@ -6,8 +6,8 @@ description:
   `binary-orphans` defines orphan instances for types in some popular packages.
 
 category:           Web
-homepage:           https://github.com/phadej/binary-orphans#readme
-bug-reports:        https://github.com/phadej/binary-orphans/issues
+homepage:           https://github.com/phadej/binary-instances#readme
+bug-reports:        https://github.com/phadej/binary-instances/issues
 author:             Oleg Grenrus <oleg.grenrus@iki.fi>
 maintainer:         Oleg Grenrus <oleg.grenrus@iki.fi>
 license:            BSD3
@@ -28,7 +28,7 @@ extra-source-files: CHANGELOG.md
 
 source-repository head
   type:     git
-  location: https://github.com/phadej/binary-orphans
+  location: https://github.com/phadej/binary-instances
 
 library
   hs-source-dirs:   src
