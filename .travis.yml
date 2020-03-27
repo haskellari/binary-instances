@@ -4,7 +4,7 @@
 #
 # For more information, see https://github.com/haskell-CI/haskell-ci
 #
-# version: 0.9.20200325
+# version: 0.9.20200326
 #
 version: ~> 1.0
 language: c
@@ -107,6 +107,8 @@ install:
   - touch cabal.project
   - |
     echo "packages: ." >> cabal.project
+  - if [ $HCNUMVER -ge 80000 ] ; then echo 'package binary-instances' >> cabal.project ; fi
+  - "if [ $HCNUMVER -ge 80000 ] ; then echo '  ghc-options: -Werror=missing-methods' >> cabal.project ; fi"
   - |
   - "for pkg in $($HCPKG list --simple-output); do echo $pkg | sed 's/-[^-]*$//' | (grep -vE -- '^(binary-instances)$' || true) | sed 's/^/constraints: /' | sed 's/$/ installed/' >> cabal.project.local; done"
   - cat cabal.project || true
@@ -132,6 +134,8 @@ script:
   - touch cabal.project
   - |
     echo "packages: ${PKGDIR_binary_instances}" >> cabal.project
+  - if [ $HCNUMVER -ge 80000 ] ; then echo 'package binary-instances' >> cabal.project ; fi
+  - "if [ $HCNUMVER -ge 80000 ] ; then echo '  ghc-options: -Werror=missing-methods' >> cabal.project ; fi"
   - |
   - "for pkg in $($HCPKG list --simple-output); do echo $pkg | sed 's/-[^-]*$//' | (grep -vE -- '^(binary-instances)$' || true) | sed 's/^/constraints: /' | sed 's/$/ installed/' >> cabal.project.local; done"
   - cat cabal.project || true
@@ -152,5 +156,5 @@ script:
   - rm -f cabal.project.local
   - ${CABAL} v2-build $WITHCOMPILER --disable-tests --disable-benchmarks all
 
-# REGENDATA ("0.9.20200325",["--branches","master","cabal.project"])
+# REGENDATA ("0.9.20200326",["--branches","master","cabal.project"])
 # EOF
