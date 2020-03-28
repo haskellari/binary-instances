@@ -74,7 +74,7 @@ test-suite binary-instances-test
     , binary-instances
     , case-insensitive
     , hashable
-    , QuickCheck            >=2.13.1   && <2.14
+    , QuickCheck            >=2.13.1   && <2.15
     , quickcheck-instances  >=0.3.21   && <0.4
     , scientific
     , tagged
