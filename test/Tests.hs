@@ -21,11 +21,13 @@ import Data.Vector          (Vector)
 
 import qualified Data.Vector.Unboxed as VU
 
-import qualified Data.Time.Calendar.Compat     as Time
-import qualified Data.Time.Clock.Compat        as Time
-import qualified Data.Time.Clock.System.Compat as Time
-import qualified Data.Time.Clock.TAI.Compat    as Time
-import qualified Data.Time.LocalTime.Compat    as Time
+import qualified Data.Time.Calendar.Compat         as Time
+import qualified Data.Time.Calendar.Month.Compat   as Time
+import qualified Data.Time.Calendar.Quarter.Compat as Time
+import qualified Data.Time.Clock.Compat            as Time
+import qualified Data.Time.Clock.System.Compat     as Time
+import qualified Data.Time.Clock.TAI.Compat        as Time
+import qualified Data.Time.LocalTime.Compat        as Time
 
 main :: IO ()
 main = defaultMain tests
@@ -48,6 +50,9 @@ tests = testGroup "Roundtrip"
     , roundtripProperty (undefined :: Time.TimeOfDay)
     , roundtripProperty (undefined :: Time.TimeZone)
     , roundtripProperty (undefined :: Time.UTCTime)
+    , roundtripProperty (undefined :: Time.QuarterOfYear)
+    , roundtripProperty (undefined :: Time.Quarter)
+    , roundtripProperty (undefined :: Time.Month)
     -- case-insensitive & text
     , roundtripProperty (undefined :: (CI Text))
     -- semigroups / monoids

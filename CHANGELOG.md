@@ -1,3 +1,7 @@
+## 1.0.1
+
+- Add instances for `time-1.11` types: `Month`, `Quarter`, `QuarterOfYear`
+
 ## 1
 
 - **Breaking change** rename this package to `binary-instances`.

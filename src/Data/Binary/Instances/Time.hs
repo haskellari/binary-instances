@@ -6,12 +6,14 @@ import Data.Binary         (Binary, Get, Put, get, put)
 import Data.Binary.Orphans ()
 import Data.Word           (Word8)
 
-import qualified Data.Fixed                    as Fixed
-import qualified Data.Time.Calendar.Compat     as Time
-import qualified Data.Time.Clock.Compat        as Time
-import qualified Data.Time.Clock.System.Compat as Time
-import qualified Data.Time.Clock.TAI.Compat    as Time
-import qualified Data.Time.LocalTime.Compat    as Time
+import qualified Data.Fixed                        as Fixed
+import qualified Data.Time.Calendar.Compat         as Time
+import qualified Data.Time.Calendar.Month.Compat   as Time
+import qualified Data.Time.Calendar.Quarter.Compat as Time
+import qualified Data.Time.Clock.Compat            as Time
+import qualified Data.Time.Clock.System.Compat     as Time
+import qualified Data.Time.Clock.TAI.Compat        as Time
+import qualified Data.Time.LocalTime.Compat        as Time
 
 instance Binary Time.Day where
   get = fmap Time.ModifiedJulianDay get
@@ -84,4 +86,27 @@ instance Binary Time.DayOfWeek where
             4 -> Time.Thursday
             5 -> Time.Friday
             6 -> Time.Saturday
+            _ -> error "panic: get @DayOfWeek"
+
+instance Binary Time.Month where
+    put (Time.MkMonth m) = put m
+    get = fmap Time.MkMonth get
+
+instance Binary Time.Quarter where
+    put (Time.MkQuarter m) = put m
+    get = fmap Time.MkQuarter get
+
+instance Binary Time.QuarterOfYear where
+    put Time.Q1 = put (1 :: Word8)
+    put Time.Q2 = put (2 :: Word8)
+    put Time.Q3 = put (3 :: Word8)
+    put Time.Q4 = put (4 :: Word8)
+
+    get = do
+        i <- get
+        return $ case mod (i :: Word8) 7 of
+            1 -> Time.Q1
+            2 -> Time.Q2
+            3 -> Time.Q3
+            4 -> Time.Q4
             _ -> error "panic: get @DayOfWeek"
