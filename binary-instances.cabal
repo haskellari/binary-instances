@@ -72,6 +72,7 @@ test-suite binary-instances-test
     , base
     , binary
     , binary-instances
+    , bytestring
     , case-insensitive
     , hashable
     , QuickCheck            >=2.13.1   && <2.15

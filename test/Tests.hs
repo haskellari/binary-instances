@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP                 #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 module Main (main) where
 
@@ -10,6 +11,7 @@ import Test.QuickCheck       (Arbitrary, Property, (===))
 import Test.Tasty            (TestTree, defaultMain, testGroup)
 import Test.Tasty.QuickCheck (testProperty)
 
+import Data.ByteString      (ByteString)
 import Data.CaseInsensitive (CI)
 import Data.HashMap.Lazy    (HashMap)
 import Data.HashSet         (HashSet)
@@ -54,7 +56,11 @@ tests = testGroup "Roundtrip"
     , roundtripProperty (undefined :: Time.Quarter)
     , roundtripProperty (undefined :: Time.Month)
     -- case-insensitive & text
+#if __GLASGOW_HASKELL__ <807
+    -- https://github.com/haskell/text/issues/227
     , roundtripProperty (undefined :: (CI Text))
+#endif
+    , roundtripProperty (undefined :: (CI ByteString))
     -- semigroups / monoids
     , roundtripProperty (undefined :: (Sum Int))
     -- tagged
