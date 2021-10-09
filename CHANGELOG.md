@@ -1,3 +1,7 @@
+## 1.0.2
+
+- Support `aeson-2.0.0.0`
+
 ## 1.0.1
 
 - Add instances for `time-1.11` types: `Month`, `Quarter`, `QuarterOfYear`
