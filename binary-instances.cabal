@@ -1,5 +1,6 @@
 name:               binary-instances
 version:            1.0.2
+x-revision:         1
 synopsis:           Orphan instances for binary
 description:
   `binary-instances` defines orphan instances for types in some popular packages.
