@@ -1,3 +1,7 @@
+## 1.0.3
+
+- Add instance for `primitive`s `ByteArray`.
+
 ## 1.0.2
 
 - Support `aeson-2.0.0.0`
