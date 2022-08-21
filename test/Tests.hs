@@ -23,6 +23,7 @@ import Data.Vector          (Vector)
 
 import qualified Data.Vector.Unboxed as VU
 
+import qualified Data.Primitive                    as Prim
 import qualified Data.Time.Calendar.Compat         as Time
 import qualified Data.Time.Calendar.Month.Compat   as Time
 import qualified Data.Time.Calendar.Quarter.Compat as Time
@@ -70,6 +71,7 @@ tests = testGroup "Roundtrip"
     -- vector
     , roundtripProperty (undefined :: Vector Char)
     , roundtripProperty (undefined :: VU.Vector Char)
+    , roundtripProperty (undefined :: Prim.ByteArray)
     ]
 
 roundtrip :: (Eq a, Show a, Binary a) => a -> a -> Property
