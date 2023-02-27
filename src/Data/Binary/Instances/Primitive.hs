@@ -4,6 +4,7 @@ module Data.Binary.Instances.Primitive where
 
 import Data.Binary.Orphans ()
 
+#if !MIN_VERSION_primitive(0,8,0)
 import Control.Monad (replicateM)
 import Data.Binary   (Binary, Get, Put, get, put)
 import Data.Word     (Word8)
@@ -25,3 +26,4 @@ instance Binary Prim.ByteArray where
     len <- get
     xs  <- replicateM len get
     return (Prim.byteArrayFromListN len (xs :: [Word8]))
+#endif
