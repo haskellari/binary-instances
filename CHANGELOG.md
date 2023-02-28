@@ -1,3 +1,9 @@
+## 1.0.4
+
+- Add instances for `ByteArray` from `data-array-byte` or `base`
+- Support `primitive-0.8`
+- Support `tagged-0.8.7`
+
 ## 1.0.3
 
 - Add instance for `primitive`s `ByteArray`.

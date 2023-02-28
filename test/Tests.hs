@@ -32,6 +32,10 @@ import qualified Data.Time.Clock.System.Compat     as Time
 import qualified Data.Time.Clock.TAI.Compat        as Time
 import qualified Data.Time.LocalTime.Compat        as Time
 
+#if MIN_VERSION_base(4,9,0)
+import qualified Data.Array.Byte as AB
+#endif
+
 main :: IO ()
 main = defaultMain tests
 
@@ -72,6 +76,9 @@ tests = testGroup "Roundtrip"
     , roundtripProperty (undefined :: Vector Char)
     , roundtripProperty (undefined :: VU.Vector Char)
     , roundtripProperty (undefined :: Prim.ByteArray)
+#if MIN_VERSION_base(4,9,0)
+    , roundtripProperty (undefined :: AB.ByteArray)
+#endif
     ]
 
 roundtrip :: (Eq a, Show a, Binary a) => a -> a -> Property
