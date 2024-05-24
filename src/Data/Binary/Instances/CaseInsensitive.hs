@@ -8,4 +8,4 @@ import qualified Data.CaseInsensitive as CI
 
 instance (CI.FoldCase a, Binary a) => Binary (CI.CI a) where
     get = fmap CI.mk get
-    put = put . CI.foldedCase
+    put = put . CI.original
