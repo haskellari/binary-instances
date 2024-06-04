@@ -1,3 +1,7 @@
+## 1.0.5
+
+- Support GHC-8.6.5...9.10.1
+
 ## 1.0.4
 
 - Add instances for `ByteArray` from `data-array-byte` or `base`
