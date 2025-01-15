@@ -1,3 +1,8 @@
+## 1.0.6
+
+- Support GHC-9.12.1
+- Fix a small bug QuarterOfYear instance
+
 ## 1.0.5
 
 - Support GHC-8.6.5...9.10.1
