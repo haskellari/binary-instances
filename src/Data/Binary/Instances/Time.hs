@@ -86,7 +86,7 @@ instance Binary Time.DayOfWeek where
             4 -> Time.Thursday
             5 -> Time.Friday
             6 -> Time.Saturday
-            _ -> error "panic: get @DayOfWeek"
+            j -> error $ "panic: get @DayOfWeek: " ++ show (i, j)
 
 instance Binary Time.Month where
     put (Time.MkMonth m) = put m
@@ -104,9 +104,9 @@ instance Binary Time.QuarterOfYear where
 
     get = do
         i <- get
-        return $ case mod (i :: Word8) 7 of
+        return $ case mod (i :: Word8) 4 of
             1 -> Time.Q1
             2 -> Time.Q2
             3 -> Time.Q3
-            4 -> Time.Q4
-            _ -> error "panic: get @DayOfWeek"
+            0 -> Time.Q4
+            j -> error $ "panic: get @QuarterOfYear: " ++ show (i, j)
